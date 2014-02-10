@@ -14,7 +14,7 @@ describe Place do
 
   describe ":build" do
     let(:name) { "El Paso, TX"}
-    let(:result) { stub("el paso", coordinates: [29, -95])}
+    let(:result) { double("el paso", coordinates: [29, -95])}
 
     it "should build from the map" do
       Map.should_receive(:search).with(name).and_return(result)
