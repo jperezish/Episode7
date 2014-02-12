@@ -1,15 +1,27 @@
 require_relative "../lib/calculates_route"
 require_relative "../lib/place"
 
-describe CalculatesRoute do
+describe Route do
   let(:dallas) {Place.build("Dallas, TX") }
   let(:austin ) { Place.build("Austin, TX")}
   let(:lubbock ) { Place.build("Lubbock, TX")}
   let(:el_paso ) { Place.build("El Paso, TX")}
+  let (:points) {[dallas, el_paso, austin, lubbock]}
+  let(:route) { Route.new }
 
   it "should calculate the route" do
-    points = [dallas, el_paso, austin, lubbock]
     expected = [dallas, austin, lubbock, el_paso]
-    CalculatesRoute.calculate(points).should eq(expected)
+    route.calculate(points).should eq(expected)
+  end
+
+  it "should provide the shortest distance between a set of routes" do
+    remaining_points = [lubbock, dallas, el_paso]
+    route.shortest_distance(austin, remaining_points). should eq(dallas)
+  end
+
+  it "should calculate total miles traveled" do
+    route.calculate(points)
+    route.miles_traveled.should be_within(1).of(812)
   end
 end
+

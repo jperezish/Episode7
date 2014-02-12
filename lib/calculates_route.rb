@@ -1,7 +1,11 @@
-class CalculatesRoute
+class Route
+  attr_reader :miles_traveled
 
-  def self.calculate(points)
+  def initialize
+    @miles_traveled = 0
+  end
 
+  def calculate(points)
     remaining_points = points
     route = []
     route << remaining_points.slice!(0)
@@ -12,11 +16,22 @@ class CalculatesRoute
     route
   end
 
-  def self.shortest_distance(from, possible)
+  def shortest_distance(from, possible)
     distances = possible.map do |point|
       {point: point, distance: Map.distance_between(from, point)}
     end
-    distances.sort{|a,b| a.fetch(:distance) <=> b.fetch(:distance)}.first.fetch(:point)
+    get_the_shortest_distance_from(distances)
+  end
+
+  def get_the_shortest_distance_from(distances)
+    shortest_distance = distances.sort{|a,b| a.fetch(:distance) <=> b.fetch(:distance)}
+    add_to_miles_traveled(shortest_distance.first.fetch(:distance))
+    shortest_distance.first.fetch(:point)
+  end
+
+  def add_to_miles_traveled(miles)
+    @miles_traveled += miles
   end
 end
+
 

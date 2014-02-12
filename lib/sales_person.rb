@@ -3,6 +3,7 @@ class SalesPerson
   attr_reader :cities, :starting_city
   def initialize
     @cities = []
+    @route = Route.new
   end
 
   def schedule_city(city, options={})
@@ -14,10 +15,10 @@ class SalesPerson
   end
 
   def route
-    @routed_cities = CalculatesRoute.calculate(cities)
+    @route.calculate(cities)
   end
 
   def miles_traveled
-    @routed_cities
+    @route.miles_traveled
   end
 end

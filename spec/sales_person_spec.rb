@@ -16,15 +16,15 @@ describe SalesPerson do
     }.to change(subject.cities,:count).by(1)
   end
 
-  it "should calculate a route via the CalculatesRoute" do
+  it "should calculate a route via the Route" do
     cities = [double, double, double]
     subject.stub(:cities) { cities }
-    CalculatesRoute.should_receive(:calculate).with(cities)
+    Route.any_instance.should_receive(:calculate).with(cities)
     subject.route
   end
-  it "should return the route from CalculatesRoute" do
+  it "should return the route from Route" do
     route_stub = [double, double]
-    CalculatesRoute.stub(:calculate) { route_stub }
+    Route.any_instance. stub(:calculate) { route_stub }
     subject.route.should eq(route_stub)
   end
 
@@ -34,10 +34,10 @@ describe SalesPerson do
     subject.starting_city.should eq(city)
   end
 
-  xit "should calculate total miles traveled" do
-
-    subject.miles_traveled.should eq(400)
+  it "should calculate total miles traveled via Route" do
+    Route.any_instance.should_receive(:miles_traveled)
+    subject.miles_traveled
   end
 
-  it "should return total time traveled at 60 mph"
+  it "should return total time traveled at 60 mph via Route"
 end
