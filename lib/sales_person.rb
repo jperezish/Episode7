@@ -14,6 +14,10 @@ class SalesPerson
   end
 
   def route
-    CalculatesRoute.calculate(cities)
+    @routed_cities = CalculatesRoute.calculate(cities)
+  end
+
+  def miles_traveled
+    @routed_cities
   end
 end

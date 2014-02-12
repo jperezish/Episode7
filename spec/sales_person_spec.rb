@@ -33,4 +33,11 @@ describe SalesPerson do
     subject.schedule_city(city, starting_city: true)
     subject.starting_city.should eq(city)
   end
+
+  xit "should calculate total miles traveled" do
+
+    subject.miles_traveled.should eq(400)
+  end
+
+  it "should return total time traveled at 60 mph"
 end
