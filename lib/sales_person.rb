@@ -1,9 +1,9 @@
 class SalesPerson
 
   attr_reader :cities, :starting_city
-  def initialize
+  def initialize(route = Route.new)
     @cities = []
-    @route = Route.new
+    @route = route
   end
 
   def schedule_city(city, options={})

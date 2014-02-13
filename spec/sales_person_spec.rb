@@ -2,6 +2,12 @@ require_relative "../lib/sales_person"
 require_relative "../lib/route"
 
 describe SalesPerson do
+
+  before do
+    @route_double = double
+    @sales_person = SalesPerson.new(@route_double)
+  end
+
   it "should have many cities" do
     city = double
     subject.schedule_city(city)
@@ -18,14 +24,14 @@ describe SalesPerson do
 
   it "should calculate a route via the Route" do
     cities = [double, double, double]
-    subject.stub(:cities) { cities }
-    Route.any_instance.should_receive(:calculate).with(cities)
-    subject.route
+    @sales_person.stub(:cities) { cities }
+    @route_double.should_receive(:calculate).with(cities)
+    @sales_person.route
   end
   it "should return the route from Route" do
     route_stub = [double, double]
-    Route.any_instance. stub(:calculate) { route_stub }
-    subject.route.should eq(route_stub)
+    @route_double.stub(:calculate) { route_stub }
+    @sales_person.route.should eq(route_stub)
   end
 
   it "should allow for the starting point to be specified" do
@@ -35,12 +41,12 @@ describe SalesPerson do
   end
 
   it "should calculate total miles traveled via Route" do
-    Route.any_instance.should_receive(:miles_traveled)
-    subject.miles_traveled
+    @route_double.should_receive(:miles_traveled)
+    @sales_person.miles_traveled
   end
 
   it "should return total time traveled at 60 mph via Route" do
-    Route.any_instance.should_receive(:time_traveled)
-    subject.time_traveled
+    @route_double.should_receive(:time_traveled)
+    @sales_person.time_traveled
   end
 end
