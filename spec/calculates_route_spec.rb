@@ -1,4 +1,4 @@
-require_relative "../lib/calculates_route"
+require_relative "../lib/route"
 require_relative "../lib/place"
 
 describe Route do

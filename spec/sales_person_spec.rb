@@ -1,5 +1,5 @@
 require_relative "../lib/sales_person"
-require_relative "../lib/calculates_route"
+require_relative "../lib/route"
 
 describe SalesPerson do
   it "should have many cities" do
