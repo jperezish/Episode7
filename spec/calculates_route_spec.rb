@@ -23,5 +23,10 @@ describe Route do
     route.calculate(points)
     route.miles_traveled.should be_within(1).of(812)
   end
+
+  it "should calculate total travel time" do
+    route.calculate(points)
+    route.time_traveled.should be_within(1).of(13)
+  end
 end
 

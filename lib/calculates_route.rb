@@ -32,6 +32,10 @@ class Route
   def add_to_miles_traveled(miles)
     @miles_traveled += miles
   end
+
+  def time_traveled
+    @miles_traveled / 60
+  end
 end
 
 

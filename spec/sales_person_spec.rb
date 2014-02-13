@@ -39,5 +39,8 @@ describe SalesPerson do
     subject.miles_traveled
   end
 
-  it "should return total time traveled at 60 mph via Route"
+  it "should return total time traveled at 60 mph via Route" do
+    Route.any_instance.should_receive(:time_traveled)
+    subject.time_traveled
+  end
 end

@@ -21,4 +21,8 @@ class SalesPerson
   def miles_traveled
     @route.miles_traveled
   end
+
+  def time_traveled
+    @route.time_traveled
+  end
 end
