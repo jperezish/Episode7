@@ -9,7 +9,7 @@ class Route
     remaining_points = points
     route = []
     route << remaining_points.slice!(0)
-    until remaining_points == [] do
+    while remaining_points.any? do
       next_point = shortest_distance(route.last, remaining_points)
       route << remaining_points.slice!(remaining_points.index(next_point))
     end

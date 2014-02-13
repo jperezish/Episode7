@@ -12,4 +12,4 @@ puts "Here's my route:"
 puts jason.route
 puts "-----------------------------"
 puts "This route will cover #{jason.miles_traveled.round(1)} miles, as the crow flies."
-puts "If that crow flew 60 mph it'd take #{jason.time_traveled.round(2)} hours."
+puts "If that crow flew 55 mph it'd take #{jason.time_traveled.round(2)} hours."
