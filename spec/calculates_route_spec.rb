@@ -26,7 +26,7 @@ describe Route do
 
   it "should calculate total travel time" do
     route.calculate(points)
-    route.time_traveled.should be_within(1).of(13)
+    route.time_traveled.should be_within(0.1).of(14.76)
   end
 end
 

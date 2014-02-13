@@ -34,7 +34,7 @@ class Route
   end
 
   def time_traveled
-    @miles_traveled / 60
+    @miles_traveled / 55
   end
 end
 
