@@ -1,12 +1,15 @@
 Dir["./lib/*.rb"].each {|file| require file }
 
 
-phil = SalesPerson.new
-phil.schedule_city(Place.build("Whittier, CA"))
-phil.schedule_city(Place.build("Chino Hills, CA"), starting_city: true)
-phil.schedule_city(Place.build("Brea, CA"))
-phil.schedule_city(Place.build("Irvine, CA"))
+jason = SalesPerson.new
+jason.schedule_city(Place.build("Whittier, CA"))
+jason.schedule_city(Place.build("Chino Hills, CA"), starting_city: true)
+jason.schedule_city(Place.build("Brea, CA"))
+jason.schedule_city(Place.build("Irvine, CA"))
 
-puts phil.route
-puts phil.miles_traveled
-puts phil.time_traveled
+puts "-----------------------------"
+puts "Here's my route:"
+puts jason.route
+puts "-----------------------------"
+puts "This route will cover #{jason.miles_traveled.round(1)} miles, as the crow flies."
+puts "If that crow flew 60 mph it'd take #{jason.time_traveled.round(2)} hours."
